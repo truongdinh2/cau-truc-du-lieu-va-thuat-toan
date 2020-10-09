@@ -16,20 +16,16 @@
                 this.next = next;
             }
         }
-
         class linkedList {
             constructor() {
                 this.head = null;
                 this.size = 0;
             }
-
             // insert first node
-
             insertFirst(data) {
                 this.head = new node(data, this.head);
                 this.size++;
             }
-
             // insert last node
             insertLastNode(data) {
                 let not = new node(data);
@@ -38,35 +34,26 @@
                     this.head = not;
                 } else {
                     current = this.head;
-
                     while (current.next) {
                         current = current.next;
                     }
-
                     current.next = not;
                 }
-
-                this.size++
-
-
+                this.size++;
             }
             // insert at index
             insertAt(data, index) {
                 if (index > 0 && index > this.size) {
                     return;
                 }
-
                 if (index === 0) {
                     this.head = new node(data, this.head);
                     return;
                 }
-
                 const not = new node(data);
                 let current, previous;
-
                 current = this.head;
                 let count = 0;
-
                 while (count < index) {
                     previous = current;
                     count++;
@@ -81,15 +68,12 @@
 
             printListData() {
                 let current = this.head;
-
                 while (current) {
                     console.log(current.data);
                     current = current.next;
                 }
             }
-
             // remove at index
-
             removeAt(index) {
                 if (index > 0 && index > this.size) {
                     return;
@@ -106,22 +90,18 @@
                         previous = current;
                         current = current.next;
                     }
-
                     previous.next = current.next;
                 }
-
                 this.size--;
             }
         }
         const ll = new linkedList();
-
         ll.insertFirst("node 1");
         ll.insertFirst("node 2 ");
         ll.insertFirst("node 3");
         ll.insertLastNode("node 4 them cuoi")
         ll.insertAt("node 5 duoc them dua vao index", 5)
         ll.removeAt(1);
-
         ll.printListData();
     </script>
 </body>
