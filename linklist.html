@@ -10,29 +10,95 @@
 <body>
     <div id="div1"></div>
     <script>
-        class ListNode {
-            constructor(data) {
-                this.data = data
-                this.next = null
+        class node {
+            constructor(data, next = null) {
+                this.data = data;
+                this.next = next;
             }
         }
-        class LinkedList {
-            constructor(head = null) {
-                this.head = head
-            }
-        }
-        let node1 = new ListNode("hello")
-        let node2 = new ListNode("boy is poorer")
-        let node3 = new ListNode("love me i don't ask for a gift back")
-        node1.next = node2 
-        node2.next = node3
-        let list = new LinkedList(node2)
 
-        
-       
-        
-        
-        document.getElementById('div1').innerHTML = list.head.next.data;
+        class linkedlist {
+            constructor() {
+                this.head = null;
+                this.size = 0;
+            }
+
+            // insert first node
+
+            insertFirst(data) {
+                this.head = new node(data, this.head)
+                this.size++
+            }
+
+            // insert last node
+            inserlastnode(data) {
+                let not = new node(data);
+                let current;
+                if (!this.head) {
+                    this.head = not;
+                } else {
+                    current = this.head;
+
+                    while(current.next) {
+                        current = current.next;
+                    }
+
+                    current.next = not;
+                }
+
+                this.size++
+
+
+            }
+            // insert at index
+            insertat(data, index) {
+               if(index > 0 && index > this.size) {
+                   return;
+               } 
+
+               if(index === 0) {
+                    this.head = new node(data, this.head);
+                    return;
+               }
+                
+               const not = new node(data);
+               let current, previous;
+
+               current = this.head;
+               let count = 0;
+
+               while(count < index) {
+                   previous = current;
+                   count++;
+                   current = current.next;
+               }
+               
+               not.next = current;
+               previous.next = node;
+
+               this.size++;
+            }
+            
+            // print list data
+            printlistdata() {
+                let current = this.head;
+
+                while (current) {
+                    console.log(current.data);
+                    current = current.next;
+                }
+            }
+        }
+
+        const ll = new linkedlist();
+
+        ll.insertFirst("node 1");
+        ll.insertFirst("node 2 ");
+        ll.insertFirst("node 3");
+        ll.inserlastnode("node 4 them cuoi")
+        ll.insertat("node 5 duoc them dua vao index",5)
+
+        ll.printlistdata();
     </script>
 </body>
 
