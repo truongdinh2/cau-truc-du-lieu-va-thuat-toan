@@ -25,7 +25,7 @@
             //remove
             pop() {
                 if (this.count == 0) {
-                    return undefined
+                    return undefined;
                 }
                 let Delete = this.items[this.count - 1];
                 this.count--;
@@ -54,6 +54,21 @@
                 console.log(str);
                 return str;
             }
+            //doi_co_so
+            doi_co_so(soso) {
+                let stack = [];
+                const temp = soso;
+                while (soso != 0) {
+                    let du = soso % 2;
+                    stack.push(du);
+                    soso = Math.floor(soso / 2);
+                }
+                let result = '';
+                while (stack.length > 0) {
+                    result = result + stack.pop() ;
+                }
+                console.log(`${temp} chuyen sang he nhi phan: ${result}`);
+            }
         }
 
         // add and remove element
@@ -69,7 +84,13 @@
         Stack.isEmpty();
         Stack.pop();
         console.log(Stack.pop());
+        Stack.doi_co_so(11);
     </script>
+   
+
+
+
+
 </body>
 
 </html>
