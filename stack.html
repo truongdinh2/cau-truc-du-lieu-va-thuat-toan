@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div"></div>
+    <script>
+        class stack {
+            constructor() {
+                this.items = [];
+                this.count = 0;
+            }
+            // add
+            push(element) {
+                this.items[this.count] = element;
+                console.log(`them phan tu ${element} vao vi tri thu ${this.count}`);
+                this.count += 1;
+                return;
+            }
+            //remove
+            pop() {
+                if (this.count == 0) {
+                    return undefined
+                }
+                let Delete = this.items[this.count - 1];
+                this.count--;
+                console.log(`da xoa phan tu ${Delete}`);
+                return Delete;
+            }
+            peek() {
+                console.log(`top cua stack la ${this.items[this.count - 1]}`)
+                return this.items[this.count - 1];
+            }
+            //check empty
+            isEmpty() {
+                console.log(this.count == 0 ? "empty" : "not empty")
+                return this.count == 0;
+            }
+            //check size of stack
+            size() {
+                console.log(`co ${this.count} element`);
+                return this.count;
+            }
+            printf() {
+                var str = '';
+                for (var i = 0; i < this.count; i++) {
+                    str += this.items[i] + " ";
+                }
+                console.log(str);
+                return str;
+            }
+        }
+
+        // add and remove element
+
+        const Stack = new stack();
+
+        Stack.push(100);
+        Stack.push('200');
+        Stack.peek();
+        Stack.push(300);
+        Stack.printf();
+        Stack.size();
+        Stack.isEmpty();
+        Stack.pop();
+        console.log(Stack.pop());
+    </script>
+</body>
+
+</html>
