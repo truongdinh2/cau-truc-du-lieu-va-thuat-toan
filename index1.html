@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function doi_sang_hau_to(input) {
+      let dap_an = [];
+      let char, stack = [];
+      const toan_tu = {
+        '+': 1,
+        '-': 1,
+        '/': 2,
+        '*': 2
+      }
+      for (let char of input.split(' ')) {
+        let check = toan_tu[char];
+        if (check) {
+          let tt_cuoi_cung = toan_tu[stack[stack.length - 1]];
+          while (tt_cuoi_cung >= check) {
+            dap_an.push(stack.pop());
+            tt_cuoi_cung = toan_tu[stack[stack.length - 1]];
+          }
+          stack.push(char);
+        } else {
+          dap_an.push(char);
+        }
+      }
+      while (stack.length > 0) {
+        dap_an.push(stack.pop())
+      }
+      return dap_an.join(' ')
+    }
+    let t = doi_sang_hau_to("14 + 23 * 23 + 23 * 32");
+    console.log(t);
+  </script>
+  function infixToPostfix(input) {
+    let stack = [],
+    answer = [],
+    char;
+    const operands = {
+    '+': 1,
+    '-': 1,
+    "*": 2,
+    "/": 2,
+    };
+(let char of input.split(' ')) {
+let currentPrecedence = operands[char];
+
+if (currentPrecedence) {
+let peek = operands[stack[stack.length - 1]];
+// pop until the peek is smaller
+while (peek >= currentPrecedence) {
+answer.push(stack.pop());
+peek = operands[stack[stack.length - 1]];
+}
+
+stack.push(char);
+
+} else { // not operand, push to answer
+answer.push(char);
+}
+}
+
+while (stack.length > 0) {
+answer.push(stack.pop())
+}
+
+return answer.join(' ');
+
+}
+
+</html>
