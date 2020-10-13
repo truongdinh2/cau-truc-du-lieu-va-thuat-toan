@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function queue() {
+            this.head = 0 ;
+            this.dataStore = [];
+        }
+        queue.prototype.enqueue = function(value) {
+            if(!value) {
+                return "this isn't value"
+            } else {
+                this.dataStore.push(value);
+                return this.dataStore
+            }
+        }
+        // remove
+        queue.prototype.dequeue = function() {
+            this.dataStore.shift()
+        }
+
+        var test = new queue();
+        test.enqueue(100);
+        test.enqueue("hello");
+        test.enqueue("anh");
+        test.enqueue("linh");
+        
+
+        test.dequeue();
+        console.log(test.dataStore)
+    </script>
+</body>
+
+</html>
