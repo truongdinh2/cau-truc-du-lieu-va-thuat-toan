@@ -15,15 +15,15 @@
         }
         queue.prototype.enqueue = function(value) {
             if(!value) {
-                return "this isn't value"
+                return "this isn't value";
             } else {
                 this.dataStore.push(value);
-                return this.dataStore
+                return this.dataStore;
             }
         }
         // remove
         queue.prototype.dequeue = function() {
-            this.dataStore.shift()
+            this.dataStore.shift();
         }
 
         var test = new queue();
@@ -34,7 +34,7 @@
         
 
         test.dequeue();
-        console.log(test.dataStore)
+        console.log(test.dataStore);
     </script>
 </body>
 
