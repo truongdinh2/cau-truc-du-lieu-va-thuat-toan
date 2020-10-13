@@ -9,34 +9,34 @@
 
 <body>
   <script>
-    function doi_sang_hau_to(input) {
-      let dap_an = [];
+    function changeSuffixes(input) {
+      let answer = [];
       let char, stack = [];
-      const toan_tu = {
+      const operator = {
         '+': 1,
         '-': 1,
         '/': 2,
         '*': 2
       }
       for (let char of input.split(' ')) {
-        let check = toan_tu[char];
+        let check = operator[char];
         if (check) {
-          let tt_cuoi_cung = toan_tu[stack[stack.length - 1]];
-          while (tt_cuoi_cung >= check) {
-            dap_an.push(stack.pop());
-            tt_cuoi_cung = toan_tu[stack[stack.length - 1]];
+          let lastOperator = operator[stack[stack.length - 1]];
+          while (lastOperator >= check) {
+            answer.push(stack.pop());
+            lastOperator = operator[stack[stack.length - 1]];
           }
           stack.push(char);
         } else {
-          dap_an.push(char);
+          answer.push(char);
         }
       }
       while (stack.length > 0) {
-        dap_an.push(stack.pop());
+        answer.push(stack.pop());
       }
-      return dap_an.join(' ');
+      return answer.join(' ');
     }
-    let t = doi_sang_hau_to("14 + 23 * 23 + 23 * 32");
+    let t = changeSuffixes("14 + 23 * 23 + 23 * 32");
     console.log(t);
   </script>
 </body>
