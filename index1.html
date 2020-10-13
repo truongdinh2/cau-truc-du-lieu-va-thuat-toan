@@ -32,47 +32,13 @@
         }
       }
       while (stack.length > 0) {
-        dap_an.push(stack.pop())
+        dap_an.push(stack.pop());
       }
-      return dap_an.join(' ')
+      return dap_an.join(' ');
     }
     let t = doi_sang_hau_to("14 + 23 * 23 + 23 * 32");
     console.log(t);
   </script>
-  function infixToPostfix(input) {
-    let stack = [],
-    answer = [],
-    char;
-    const operands = {
-    '+': 1,
-    '-': 1,
-    "*": 2,
-    "/": 2,
-    };
-(let char of input.split(' ')) {
-let currentPrecedence = operands[char];
-
-if (currentPrecedence) {
-let peek = operands[stack[stack.length - 1]];
-// pop until the peek is smaller
-while (peek >= currentPrecedence) {
-answer.push(stack.pop());
-peek = operands[stack[stack.length - 1]];
-}
-
-stack.push(char);
-
-} else { // not operand, push to answer
-answer.push(char);
-}
-}
-
-while (stack.length > 0) {
-answer.push(stack.pop())
-}
-
-return answer.join(' ');
-
-}
+</body>
 
 </html>
