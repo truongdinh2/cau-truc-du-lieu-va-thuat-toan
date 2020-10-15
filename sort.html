@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [];
+        var ar = [23, 12, 11, 41, 21, 14];
+
+        function Min(min) {
+            return Math.min.apply(null, min)
+        }
+        for (var i = 0; i < ar.length; i++) {
+            var t = Min(ar);
+            var index = ar.indexOf(t);
+            ar[index] = Infinity;
+            arr.push(t);
+        }
+        console.log(arr);
+        var text = ' ';
+        for (var j = 0; j < arr.length; j++) {
+            text += arr[j] + ' ';
+        }
+        console.log(text);
+
+        // select-sort
+
+        var array = [1010, 4321, 1223, 1231, 1213, 3112];
+
+        function Sort(array) {
+            for (let i = 0; i < array.length; i++) {
+                let indexMin = i;
+                for (let jj = i; jj < array.length; jj++) {
+                    if (array[jj] < array[indexMin]) {
+                        indexMin = jj;
+                    }
+                }
+                if (indexMin != i) {
+                    let tmp = array[i];
+                    array[i] = array[indexMin];
+                    array[indexMin] = tmp;
+                }
+            }
+            return array;
+        }
+        console.log(Sort(array));
+    </script>
+</body>
+
+</html>
