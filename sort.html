@@ -32,7 +32,7 @@
 
         var array = [1010, 4321, 1223, 1231, 1213, 3112];
 
-        function Sort(array) {
+        function sort(array) {
             for (let i = 0; i < array.length; i++) {
                 let indexMin = i;
                 for (let jj = i; jj < array.length; jj++) {
@@ -48,7 +48,7 @@
             }
             return array;
         }
-        console.log(Sort(array));
+        console.log(sort(array));
 
         //insertion sort
 
@@ -67,6 +67,50 @@
         }
         inserSort(arra);
         console.log(arra);
+
+        //quick-sort 
+
+        function quickSort(array1) {
+            if (array1.length === 1) {
+                return array1;
+            }
+            const pivot = array1[array1.length - 1];
+            const leftArr = [];
+            const rightArr = [];
+            console.log(pivot)
+            for (let i = 0; i < array1.length - 1; i++) {
+                if (array1[i] < pivot) {
+                    leftArr.push(array1[i]);
+                } else {
+                    rightArr.push(array1[i]);
+                }
+            }
+            if (leftArr.length > 0 && rightArr.length > 0) {
+                return [...quickSort(leftArr), pivot, ...quickSort(rightArr)];
+            } else if (leftArr.length > 0) {
+                return [...quickSort(leftArr), pivot]
+            } else {
+                return [pivot, ...quickSort(rightArr)]
+            }
+        }
+        const array1 = [12, 11, 21, 32, 13, 31, 33];
+        console.log(quickSort(array1));
+
+        //Bubble sort.
+
+        function bubbleSort(array2) {
+            for (let i = 0; i < array2.length; i++) {
+                for (let j = 0; j < array2.length ; j++) {
+                    if (array2[j] > array2[j + 1]) {
+                        let temp = array2[j];
+                        array2[j] = array2[j + 1];
+                        array2[j + 1] = temp;
+                    }
+                }
+            } return array2;
+        }
+        array2 = [2,7, 3, 1];
+        console.log(bubbleSort(array2));
     </script>
 </body>
 
