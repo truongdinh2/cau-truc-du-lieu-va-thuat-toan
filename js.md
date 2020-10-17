@@ -19,7 +19,34 @@ document.getElementById('demo').innerHTML = "hello \
 DOlly!";
 ```
 dùng \ khi muốn xuống dòng trong lúc viết string.
+- có thể chuyển object sang array bằng object.values(); sẽ hiện ra toàn bộ value trong object hoặc có thể sử dụng loop (in).
+```
+<script>
+var person = {name:"John", age:50, city:"New York"};
+var myArray = Object.values(person);
+document.getElementById("demo").innerHTML = myArray;
+</script>
+```
+- có thể đổi object sang string. 
+```
+var person = {age : 50, name : "truong"}
+var myString = JSON.stringify(person);
+// sau đó sẽ in ra JSON.
+```
+- nhưng đối với function thì sẽ không đổi được cách khắc phục là convert function sang string bằng toString();
+```
+<script>
+var person = {name:"John", age:function () {return 30;}};
+person.age = person.age.toString();
+
+var myString = JSON.stringify(person);
+document.getElementById("demo").innerHTML = myString;
+</script>
+```
+- JSON.stringify() là chuyển đổi dữ liệu sang dạng json.
+
 # 4.	Method in js
+
 -	indexOf() thứ tự của phần tử tính từ đầu. lastIndexOf() tương tự nhưng từ cuối.
 -	Search() tìm kiếm vị trí phần tử. 
 ```
@@ -208,7 +235,7 @@ catch(err) {
 }
 </script>
 ```
-- dùng khi với vai trò như HTML validation 
+- dùng khi với vai trò như HTML validation . throw dùng với if . finally dùng khi try catch hoàn thành. bất kể kết quả là gì
 ```
 <script>
 function myFunction() {
@@ -229,8 +256,101 @@ function myFunction() {
 }
 </script>
 ```
+- strict mode dùng để đảm bảo cho js, đã khai báo đầy đủ chưa.
+- Arrow Function syntax để viết rút gọn function
+```
+hello = function() {
+  return "Hello World!";
+}
+```
+```
+hello = function() {
+  return "Hello World!";
+}
+```
+```
+hello = () => "Hello World!";
+```
+```
+hello = val => "Hello " + val;
+```
+### class syntax
+- sử dụng để tạo class, luôn thêm phương thức constructor(). 
+# 6. prototypes
+- tất cả các object đều kế thừa thuộc tính và phương thức từ prototypes.
+- không thể thêm 1 thuộc tính vào existing object constructor.
+- để add a new property to a constructor, you must add it to the constructor function. 
+```
+function Person(first, last, age, eye) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eye;
+  this.nationality = "English";// dòng này là thêm thuộc tính vào .
+}
+Person.property = "hi" // sẽ không chạy.
+```
+- Prototype Inheritance: kế thừa nguyên mẫu. object.prototype. dùng để thêm new methods or properties.
+```
+Person.prototype.nationality = "English";
+```
+# 7.function
+- involk self-invoking Functions là hàm tự gọi:
+```
+<script>
+(function () {
+  document.getElementById("demo").innerHTML = "Hello! I called myself";
+})();
+</script>
+```
+- call() 
+```
+person.fullName.call(person1, "Oslo", "Norway");
+```
+- apply()
+```
+person.fullName.apply(person1, ["Oslo", "Norway"]);
+```
+# 8.JavaScript Closures
+```
+<script>
+var add = (function () {
+  var counter = 0;
+  return function () {counter += 1; return counter;}
+})();
 
-# 
+function myFunction(){
+  document.getElementById("demo").innerHTML = add();
+}
+</script>
+```
+# 9.JavaScript Class Inheritance
+- kế thừa sử dụng `extend` keyword. và `super` keyword.
+```
+class Car {
+  constructor(brand) {
+    this.carname = brand;
+  }
+  present() {
+    return 'I have a ' + this.carname;
+  }
+}
+
+class Model extends Car {
+  constructor(brand, mod) {
+    super(brand);
+    this.model = mod;
+  }
+  show() {
+    return this.present() + ', it is a ' + this.model;
+  }
+}
+
+let my"no-bok">Car = new Model("Ford", "Mustang");
+document.getElementById("demo").innerHTML = my"no-bok">Car.show();
+```
+
+
 
 
 
